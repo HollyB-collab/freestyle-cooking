@@ -16,10 +16,13 @@ CREATE TABLE recipes
 CREATE TABLE rnotes
 (
   id SERIAL PRIMARY KEY,
-  recipes_id INT,
+  recipe_id INT,
   notes TEXT,
   used_ingredients TEXT[],
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-  FOREIN KEY (recipe_id)
+  FOREIGN KEY (recipe_id)
     REFERENCES recipes(id)
 );
+
+INSERT INTO recipes(name, description, ingredients, steps)
+VALUES('Miso Soup', 'Fast and salty soup', ARRAY ['2 packs Ramen Noodles', 'Pinch Dried Seaweed', '¼ tsp Sesame Oil', '1 tsp Bullion', '2 Tbsp Miso Paste', '6 oz Firm Tofu'], ARRAY ['Add 6 cups of water to the pot and set the burner on high.', 'Add Ramen noodles (flavor packages removed), Seaweed, Sesame Oil and Bullion to the pot. Heat until noodles are soft.', 'In individual bowls add half Miso Paste to each bowl and mix with water till paste forms a soup.', 'Slice Tofu and add to individual bowls.', 'When noodles are ready, scoop noodles with broth into bowls.']);
