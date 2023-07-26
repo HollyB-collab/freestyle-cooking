@@ -86,7 +86,7 @@ const App = () => {
           </button>
         </div>
       </div>
-      {showMakeRecipe && <MakeRecipe /> }
+       {recipeList.length > 0 && <MakeRecipe recipe={recipeList[0]}/>}
       {showRecipe && <Recipe />}
       {showLibrary && <Library recipeList={recipeList} />}
       {showNewRecipe && <NewRecipe /> }

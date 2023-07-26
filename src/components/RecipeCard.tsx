@@ -5,6 +5,7 @@ import {useState} from "react";
 const RecipeCard = (props: {recipe: recipeType}) => {
 
   const [viewIngredients, setViewIngredients] = useState(false);
+  const [viewAll, setViewAll] = useState(false);
 
   return (
     <div>
@@ -20,10 +21,18 @@ const RecipeCard = (props: {recipe: recipeType}) => {
                       )
                     })}
                   </ul>
+                  <ul>
+                    {viewAll && props.recipe.steps.map((step) => {
+                      return(
+                        <li>{step}</li>
+                      )
+                    })}
+                  </ul>
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="btn-group">
                       <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => {setViewIngredients(!viewIngredients)}}>View Ingredients</button>
-                      <button type="button" className="btn btn-sm btn-outline-secondary" >Make</button>
+                      <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => {setViewIngredients(!viewIngredients); setViewAll(!viewAll)}}>View All</button>
+                      <button type="button" className="btn btn-sm btn-outline-secondary">Make</button>
                     </div>
                     <small className="text-muted">{props.recipe.time_to_make}</small>
                   </div>
