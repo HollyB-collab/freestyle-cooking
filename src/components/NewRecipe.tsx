@@ -4,6 +4,7 @@ const NewRecipe = () => {
 
   return (
     <div>
+      This one is new!
 
     </div>
   )

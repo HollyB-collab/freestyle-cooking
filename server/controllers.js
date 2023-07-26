@@ -2,7 +2,7 @@ const db = require("./connection.js");
 
 module.exports = {
   readAll: async (req, res) => {
-    const qryStr = `SELECT * FROM recepies ORDER BY last_update ASC`;
+    const qryStr = `SELECT * FROM recipes ORDER BY last_update ASC`;
     try {
       const client = await db.pool.connect();
       const recipes = await client.query(qryStr);
